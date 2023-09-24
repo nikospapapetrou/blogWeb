@@ -2,6 +2,7 @@ import Image from "next/image";
 import filiki from "../public/img/filiki_etaireia.svg";
 import Articles from "./components/Articles";
 import History from "./components/History";
+import garry from "../public/img/garry.svg";
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
         className="flex justify-center bg-[#F8ECC2] mt-8 py-10"
         aria-label="Είναι μία εικόνα svg της φιλικής εταιρείας"
       >
-        <Image src={filiki} alt="Φιλική Εταιρεία" />
+        <Image src={garry} alt="Φιλική Εταιρεία" />
       </section>
     </>
   );
