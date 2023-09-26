@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
 }
 
 const api =
-  "http://127.0.0.1:1337/api/posts?filters[categories][name][$eq]=history&sort=publishedAt:desc&populate=*";
+  "http://localhost:1337/api/posts?filters[categories][name][$eq]=history&sort=publishedAt:desc&populate=*";
 const getHistoryArticles = async () => {
   const response = await fetch(api, {
     method: "GET",
@@ -56,21 +56,22 @@ export default async function Istoria() {
       });
       return (
         <Link
-          className="px-4"
+          className="hover:scale-95 transition-all duration-150"
           key={post.id}
           href={`/post/${post.attributes.slug}`}
         >
-          <div className="pt-4">
+          <div>
             <Image
+              className="object-scale-down"
               width={1000}
               height={660}
               sizes="100vw"
-              src={`http://127.0.0.1:1337${img}`}
+              src={`http://localhost:1337${img}`}
               alt={
                 alternativeText !== null ? alternativeText : "Main_Thumbnail"
               }
             />
-            <h3 className="pt-3 hover:text-orange-700 sm:text-xl">
+            <h3 className="font-literata pt-3 hover:text-orange-700 sm:text-xl">
               {post.attributes.title}
             </h3>
             <time className="pt-2 text-gray text-sm sm:text-base">
@@ -88,7 +89,7 @@ export default async function Istoria() {
         Ιστορία
       </h2>
 
-      <div className="flex flex-col items-center text-black sm:grid sm:grid-cols-2 sm:content-end sm:justify-stretch md:max-w-5xl pb-20">
+      <div className="grid md:grid-cols-2 gap-9 justify-center mx-auto w-full md:max-w-5xl h-full">
         {renderHistoryArticles()}
       </div>
     </main>

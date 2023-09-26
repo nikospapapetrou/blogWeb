@@ -31,74 +31,72 @@ export default function Contact() {
     <>
       <Toaster />
       <Image src={contactImg} className="m-auto pb-9" alt="Επικοινωνία" />
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="grid justify-center text-sm sm:text-base w-full m-auto"
-        noValidate
-      >
-        <div className="grid">
-          <label className="pt-4 w-40" htmlFor="name">
-            Your name
-          </label>
-          <input
-            className="bg-neutral-300 border-cyan-500 border-2 rounded sm:w-96 p-0.5 max-w-xl"
-            type="text"
-            name="name"
-            id="name"
-            {...register("name", { required: "User name is required." })}
-          />
-          <span role="alert" className="text-red-800 text-xs sm:text-sm">
-            {errors.name?.message}
-          </span>
-          <label className="pt-4 w-40" htmlFor="email">
-            Your email
-          </label>
-          <input
-            className="bg-neutral-300 border-cyan-500 border-2 rounded p-0.5 max-w-xl"
-            type="email"
-            name="email"
-            id="email"
-            {...register("email", {
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Please enter a valid email.",
-              },
-            })}
-          />
-          <span role="alert" className="text-red-800  text-xs sm:text-sm">
-            {errors.email?.message}
-          </span>
-          <label className="pt-4 w-40" htmlFor="message">
-            Your message
-          </label>
-          <textarea
-            className="bg-neutral-300 border-cyan-500 border-2 rounded p-0.5 max-w-xl h-32"
-            name="message"
-            id="message"
-            {...register("message", {
-              validate: {
-                minLength: (value) =>
-                  value.length >= 20 ||
-                  "Message must be at least 20 characters long.",
-                maxLength: (value) =>
-                  value.length <= 200 ||
-                  "Message must be less than 200 characters long.",
-              },
-            })}
-          ></textarea>
-          <span role="alert" className="text-red-800 text-xs sm:text-sm">
-            {errors.message?.message}
-          </span>
+      <form className="mx-auto" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <div className="grid grid-cols-2 w-11/12 sm:w-9/12 md:w-6/12 lg:w-3/12	mx-auto col-span-full justify-center">
+          <div className="grid col-span-full">
+            <label className="pt-4 w-40" htmlFor="name">
+              Your name
+            </label>
+            <input
+              className="bg-neutral-300 border-cyan-500 border-2 rounded p-0.5 "
+              type="text"
+              name="name"
+              id="name"
+              {...register("name", { required: "User name is required." })}
+            />
+            <span role="alert" className="text-red-800 text-xs sm:text-sm">
+              {errors.name?.message}
+            </span>
+            <label className="pt-4 w-40" htmlFor="email">
+              Your email
+            </label>
+            <input
+              className="bg-neutral-300 border-cyan-500 border-2 rounded p-0.5"
+              type="email"
+              name="email"
+              id="email"
+              {...register("email", {
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: "Please enter a valid email.",
+                },
+              })}
+            />
+            <span role="alert" className="text-red-800  text-xs sm:text-sm">
+              {errors.email?.message}
+            </span>
+            <label className="pt-4 w-40" htmlFor="message">
+              Your message
+            </label>
+            <textarea
+              className="bg-neutral-300 border-cyan-500 border-2 rounded p-0.5 h-32"
+              name="message"
+              id="message"
+              {...register("message", {
+                validate: {
+                  minLength: (value) =>
+                    value.length >= 20 ||
+                    "Message must be at least 20 characters long.",
+                  maxLength: (value) =>
+                    value.length <= 200 ||
+                    "Message must be less than 200 characters long.",
+                },
+              })}
+            ></textarea>
+            <span role="alert" className="text-red-800 text-xs sm:text-sm">
+              {errors.message?.message}
+            </span>
 
-          <button
-            className={`mt-4 p-1 bg-green-700 text-white rounded max-w-xl ${
-              !isDirty || !isValid ? "bg-slate-600 cursor-not-allowed" : ""
-            } `}
-            type="submit"
-          >
-            Αποστολή
-          </button>
+            <button
+              className={`mt-4 p-1 bg-green-700 text-white rounded ${
+                !isDirty || !isValid ? "bg-slate-600 cursor-not-allowed" : ""
+              } `}
+              type="submit"
+            >
+              Αποστολή
+            </button>
+          </div>
         </div>
       </form>
     </>

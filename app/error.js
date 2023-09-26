@@ -10,7 +10,7 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <main className="flex flex-col justify-center items-center pt-32 sm:pt-24">
+    <main className="flex flex-col justify-center items-center pt-32 sm:pt-24 h-[90vh]">
       <Image
         width={0}
         height={0}

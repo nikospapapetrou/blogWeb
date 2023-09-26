@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Post({ params }) {
   const { data } = await getSinglePost(params.slug);
-
+  console.log(data[0].attributes.main_image.data.attributes);
   if (data.length === 0) {
     return (
       <>
@@ -63,7 +63,7 @@ export default async function Post({ params }) {
     dateModified: data[0].attributes.updatedAt,
     image: {
       "@type": "ImageObject",
-      url: "https://example.com/image.jpg",
+      url: `http://127.0.0.1:1337${data[0].attributes.main_image.data.attributes.url}`,
       caption: "Επικεφαλίδα εικόνας",
     },
     author: {
@@ -91,7 +91,7 @@ export default async function Post({ params }) {
         src={`http://127.0.0.1:1337${data[0].attributes.main_image.data.attributes.url}
           `}
       ></Image>
-      <h1 className="text-xl md:text-2xl text-cyan-900 font-semibold tracking-wide">
+      <h1 className="font-literata text-xl md:text-2xl text-cyan-900 font-semibold tracking-wide">
         {title}
       </h1>
       <section className="mb-20 text-xs sm:text-sm md:text-base">
